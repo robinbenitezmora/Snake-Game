@@ -159,12 +159,7 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
   }
 
   @Override
-  public void actionPerformed(ActionEvent e) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
-  }
 
-  @Override
   public void keyTyped(KeyEvent e) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
@@ -172,8 +167,64 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
 
   @Override
   public void keyPressed(KeyEvent e) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      moves = 0;
+      score = 0;
+      lengthofsnake = 3;
+      repaint();
+    }
+
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      moves++;
+      right = true;
+      if (!left) {
+        right = true;
+      } else {
+        right = false;
+        left = true;
+      }
+      up = false;
+      down = false;
+    }
+
+    if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      moves++;
+      left = true;
+      if (!right) {
+        left = true;
+      } else {
+        left = false;
+        right = true;
+      }
+      up = false;
+      down = false;
+    }
+
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+      moves++;
+      up = true;
+      if (!down) {
+        up = true;
+      } else {
+        up = false;
+        down = true;
+      }
+      left = false;
+      right = false;
+    }
+
+    if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      moves++;
+      down = true;
+      if (!up) {
+        down = true;
+      } else {
+        down = false;
+        up = true;
+      }
+      left = false;
+      right = false;
+    }
   }
 
   @Override
