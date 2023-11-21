@@ -233,4 +233,77 @@ public class GamePlay extends JPanel implements KeyListener, ActionListener {
     throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
   }
 
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    timer.schedule(null, delay);
+
+    if (right) {
+      for (int r = lengthofsnake - 1; r >= 0; r--) {
+        snakeylength[r + 1] = snakeylength[r];
+      }
+      for (int r = lengthofsnake; r >= 0; r--) {
+        if (r == 0) {
+          snakexlength[r] = snakexlength[r] + 25;
+        } else {
+          snakexlength[r] = snakexlength[r - 1];
+        }
+        if (snakexlength[r] > 850) {
+          snakexlength[r] = 25;
+        }
+      }
+      repaint();
+    }
+
+    if (left) {
+      for (int r = lengthofsnake - 1; r >= 0; r--) {
+        snakeylength[r + 1] = snakeylength[r];
+      }
+      for (int r = lengthofsnake; r >= 0; r--) {
+        if (r == 0) {
+          snakexlength[r] = snakexlength[r] - 25;
+        } else {
+          snakexlength[r] = snakexlength[r - 1];
+        }
+        if (snakexlength[r] < 25) {
+          snakexlength[r] = 850;
+        }
+      }
+      repaint();
+    }
+
+    if (up) {
+      for (int r = lengthofsnake - 1; r >= 0; r--) {
+        snakexlength[r + 1] = snakexlength[r];
+      }
+      for (int r = lengthofsnake; r >= 0; r--) {
+        if (r == 0) {
+          snakeylength[r] = snakeylength[r] - 25;
+        } else {
+          snakeylength[r] = snakeylength[r - 1];
+        }
+        if (snakeylength[r] < 75) {
+          snakeylength[r] = 625;
+        }
+      }
+      repaint();
+    }
+
+    if (down) {
+      for (int r = lengthofsnake - 1; r >= 0; r--) {
+        snakexlength[r + 1] = snakexlength[r];
+      }
+      for (int r = lengthofsnake; r >= 0; r--) {
+        if (r == 0) {
+          snakeylength[r] = snakeylength[r] + 25;
+        } else {
+          snakeylength[r] = snakeylength[r - 1];
+        }
+        if (snakeylength[r] > 625) {
+          snakeylength[r] = 75;
+        }
+      }
+      repaint();
+    }
+  }
+
 }
